@@ -56,12 +56,14 @@ ${Object.values(metadata)
   // allows css, assets, robots.txt and CMS config files to be passed into /public
   eleventyConfig.addPassthroughCopy('./src/css/**/*.css');
   eleventyConfig.addPassthroughCopy('./src/assets');
-  eleventyConfig.addPassthroughCopy('./src/admin'); // (kept; if you prefer /admin root, use mapping below instead)
   eleventyConfig.addPassthroughCopy('./src/_redirects');
   eleventyConfig.addPassthroughCopy({ './src/robots.txt': '/robots.txt' });
   eleventyConfig.addPassthroughCopy('src/images');
-  eleventyConfig.addPassthroughCopy({ 'src/admin': 'admin' }); // copies to /admin
   eleventyConfig.addPassthroughCopy({ 'src/_data/products.json': 'products.json' });
+  
+  // Copy admin/ and api/ directories from root to public/
+  eleventyConfig.addPassthroughCopy({ './admin': 'admin' });
+  eleventyConfig.addPassthroughCopy({ './api': 'api' });
   eleventyConfig.addWatchTarget('src/_data/products.json');
 
   // Expose a dev flag to templates (true when running `eleventy --serve`)
