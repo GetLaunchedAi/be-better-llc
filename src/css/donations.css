@@ -101,6 +101,9 @@
     color: var(--headerColor);
     position: relative;
   }
+  body.dark-mode #donation-options .cs-title {
+    color: var(--bodyTextColorWhite);
+  }
 
   #donation-options .cs-text {
     font-size: 1rem;
@@ -110,6 +113,9 @@
     max-width: 40.625rem;
     margin: 0;
     color: var(--bodyTextColor);
+  }
+  body.dark-mode #donation-options .cs-text {
+    color: var(--bodyTextColorWhite);
   }
 
   /* Donation Grid */
@@ -287,6 +293,9 @@
     margin: 0 0 1rem 0;
     color: var(--headerColor);
     position: relative;
+  }
+  body.dark-mode #impact-stories .cs-title {
+    color: var(--bodyTextColorWhite);
   }
 
   /* Impact Grid */

@@ -70,6 +70,30 @@
     overflow-x: hidden;
   }
 
+  /* Global .topper styling */
+  .topper {
+    font-size: clamp(0.8125rem, 1.6vw, 1rem);
+    line-height: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-weight: 700 !important;
+    color: var(--primary) !important;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  /* Global .cs-topper styling */
+  .cs-topper {
+    font-size: clamp(0.8125rem, 1.6vw, 1rem);
+    line-height: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-weight: 700 !important;
+    color: var(--primary) !important;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
   *,
   *:before,
   *:after {

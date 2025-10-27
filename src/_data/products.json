@@ -16,7 +16,8 @@
       "color": "light grey",
       "material": "cotton",
       "inStock": true,
-      "iced": false
+      "iced": false,
+      "id": "baseball-t-shirt-light-grey"
     },
     {
       "title": "Baseball Cap - Red",
@@ -31,7 +32,8 @@
       "color": "red",
       "material": "polyester",
       "inStock": true,
-      "iced": false
+      "iced": false,
+      "id": "baseball-cap-red"
     },
     {
       "title": "Baseball Pants - White",
@@ -46,7 +48,8 @@
       "color": "white",
       "material": "cotton",
       "inStock": true,
-      "iced": false
+      "iced": false,
+      "id": "baseball-pants-white"
     },
     {
       "title": "Baseball T-Shirt - Navy Blue",
@@ -61,7 +64,8 @@
       "color": "navy blue",
       "material": "cotton blend",
       "inStock": true,
-      "iced": false
+      "iced": false,
+      "id": "baseball-t-shirt-navy-blue"
     },
     {
       "title": "Baseball Cap - Red",
@@ -76,7 +80,8 @@
       "color": "red",
       "material": "cotton",
       "inStock": true,
-      "iced": false
+      "iced": false,
+      "id": "baseball-cap-red-1"
     },
     {
       "title": "Baseball Hoodie - Navy Blue",
@@ -91,7 +96,8 @@
       "color": "navy blue",
       "material": "cotton",
       "inStock": true,
-      "iced": false
+      "iced": false,
+      "id": "baseball-hoodie-navy-blue"
     },
     {
       "title": "Baseball Hoodie - Navy Blue",
@@ -106,7 +112,8 @@
       "color": "navy blue",
       "material": "polyester",
       "inStock": true,
-      "iced": false
+      "iced": false,
+      "id": "baseball-hoodie-navy-blue-1"
     },
     {
       "title": "Baseball",
@@ -121,7 +128,8 @@
       "color": "white",
       "material": "leather",
       "inStock": true,
-      "iced": false
+      "iced": false,
+      "id": "baseball"
     },
     {
       "title": "Baseball T-Shirt - White",
@@ -136,7 +144,8 @@
       "color": "white",
       "material": "cotton",
       "inStock": true,
-      "iced": false
+      "iced": false,
+      "id": "baseball-t-shirt-white"
     }
   ]
 }

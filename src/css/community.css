@@ -101,6 +101,9 @@
     color: var(--headerColor);
     position: relative;
   }
+  body.dark-mode #community-programs .cs-title {
+    color: var(--bodyTextColorWhite);
+  }
 
   #community-programs .cs-text {
     font-size: 1rem;
@@ -111,7 +114,9 @@
     margin: 0;
     color: var(--bodyTextColor);
   }
-
+ body.dark-mode #community-programs .cs-text {
+    color: var(--bodyTextColorWhite);
+  }
   /* Programs Grid */
   .programs-grid {
     display: grid;
@@ -227,6 +232,9 @@
     color: var(--headerColor);
     position: relative;
   }
+  body.dark-mode #community-stories .cs-title {
+    color: var(--bodyTextColorWhite);
+  }
 
   #community-stories .cs-text {
     font-size: 1rem;
@@ -237,7 +245,9 @@
     margin: 0;
     color: var(--bodyTextColor);
   }
-
+  body.dark-mode #community-stories .cs-text {
+    color: var(--bodyTextColorWhite);
+  }
   /* Stories Grid */
   .stories-grid {
     display: grid;
