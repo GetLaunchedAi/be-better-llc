@@ -273,7 +273,7 @@
   }
 
   .story-text:before {
-    content: """;
+    content: "";
     font-size: 2rem;
     color: var(--primary);
     font-weight: bold;
@@ -281,7 +281,7 @@
   }
 
   .story-text:after {
-    content: """;
+    content: "";
     font-size: 2rem;
     color: var(--primary);
     font-weight: bold;

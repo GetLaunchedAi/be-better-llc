@@ -28,6 +28,10 @@ $backupDir = $root . '/backups';
 $current = file_exists($dataFile) ? file_get_contents($dataFile) : '[]';
 $currentEtag = '"' . sha1($current) . '"';
 
+// Debug logging (remove in production)
+error_log("Current ETag: " . $currentEtag);
+error_log("If-Match header: " . ($_SERVER['HTTP_IF_MATCH'] ?? 'not set'));
+
 // If-Match (optimistic concurrency)
 $ifMatch = $_SERVER['HTTP_IF_MATCH'] ?? '';
 if ($ifMatch && trim($ifMatch) !== $currentEtag) {
@@ -40,14 +44,27 @@ if ($ifMatch && trim($ifMatch) !== $currentEtag) {
 $raw = file_get_contents('php://input');
 $data = json_decode($raw, true);
 
-// Validate JSON structure (array of objects with id)
-if (!is_array($data)) {
+// Validate JSON structure - handle both flat array and nested object with products array
+$products = null;
+if (is_array($data)) {
+  // Check if it's a flat array of products
+  if (count($data) > 0 && isset($data[0]['id'])) {
+    $products = $data;
+  }
+  // Check if it's a nested object with products array
+  else if (isset($data['products']) && is_array($data['products'])) {
+    $products = $data['products'];
+  }
+}
+
+if (!$products) {
   http_response_code(400);
-  echo 'Payload must be a JSON array';
+  echo 'Payload must be a JSON array of products or an object with a products array';
   exit;
 }
+
 $ids = [];
-foreach ($data as $i => $p) {
+foreach ($products as $i => $p) {
   if (!is_array($p) || !isset($p['id']) || trim((string)$p['id']) === '') {
     http_response_code(400);
     echo "Item $i missing non-empty 'id'";
@@ -72,7 +89,20 @@ $ts = date('Ymd-His');
 
 // Atomic write: temp file then rename
 $tmp = $dataFile . '.tmp';
-$newJson = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) . "\n";
+
+// Preserve original structure - if data was nested, keep it nested
+$writeData = $data;
+if (isset($data['products'])) {
+  // Update the products array in the original structure
+  $writeData['products'] = $products;
+}
+
+// Ensure consistent JSON formatting to match what the admin page expects
+$newJson = json_encode($writeData, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+// Add exactly one newline at the end to match the original format
+if (!str_ends_with($newJson, "\n")) {
+  $newJson .= "\n";
+}
 if (file_put_contents($tmp, $newJson, LOCK_EX) === false) {
   http_response_code(500);
   echo 'Failed to write temp file';

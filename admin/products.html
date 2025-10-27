@@ -356,7 +356,9 @@ let products = [];
 /* Load and detect structure (same logic as before) */
 async function load(){
   status('Loading…');
-  const res = await fetch(DATA_URL, { cache: 'no-store' });
+  // Add timestamp to prevent caching
+  const url = DATA_URL + '?t=' + Date.now();
+  const res = await fetch(url, { cache: 'no-store' });
   if (!res.ok){ status(`Failed to load (${res.status})`, false); return; }
   originalText = await res.text();
   const sha = await sha1HexOfString(originalText);
@@ -833,8 +835,17 @@ async function save(){
   if (etag) headers['If-Match'] = etag;
 
   const res = await fetch(SAVE_URL, { method:'POST', headers, body: payloadText });
-  if (res.status === 412) { status('File changed on server. Click Reload, re-apply changes, then Save.', false); return; }
-  if (!res.ok) { status(`Save failed (${res.status})`, false); return; }
+  if (res.status === 412) { 
+    status('File changed on server. Click Reload, re-apply changes, then Save.', false); 
+    console.log('ETag mismatch - current:', etag, 'server expects different');
+    return; 
+  }
+  if (!res.ok) { 
+    const errorText = await res.text().catch(() => 'Unknown error');
+    status(`Save failed (${res.status}): ${errorText}`, false); 
+    console.error('Save error:', res.status, errorText);
+    return; 
+  }
   const data = await res.json().catch(()=>({}));
   if (data && data.etag) etag = data.etag;
   status('Saved ✅');
