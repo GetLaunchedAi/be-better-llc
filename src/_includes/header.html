@@ -10,7 +10,7 @@
                 height="66">
             <img class="dark" aria-hidden="true" src="/assets/images/logo.png" decoding="async" loading="lazy"
                 alt="logo" width="221" height="66"> -->
-                <span class="logo-text">LOGO HERE</span>
+                <span class="logo-text">Better Every Swing.</span>
         </a>
 
         <!-- Mobile Nav toggle -->
@@ -22,6 +22,7 @@
         <nav id="navbar-menu" aria-label="main navigation">
             <ul>
                 {%- for entry in navPages %}
+                {%- if entry.title != 'Home' %}
                 <li class="{% if entry.title == 'Services' %}dropdown{% endif %}" id="{{ entry.title }}">
                     {% if entry.title == 'Services' %}
                     <a class="dropdown-toggle" role="button" tabindex="0">{{ entry.title }}</a>
@@ -34,6 +35,7 @@
                         }}</a>
                     {% endif %}
                 </li>
+                {%- endif %}
                 {%- endfor %}
             </ul>
         </nav>

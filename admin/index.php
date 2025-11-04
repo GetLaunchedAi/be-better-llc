@@ -67,7 +67,7 @@ if ($provided !== '') {
     input[type="password"]::placeholder{color:#9ca3af}
     input[type="password"]:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(10,98,255,.15)}
     button{height:44px;padding:0 14px;border:0;border-radius:12px;cursor:pointer;font-weight:700;color:#fff;background:var(--brand)}
-    .err{margin-top:10px;color:#b91c1c;background:#fef2f2;border:1px solid #fee2e2;padding:8px 10px;border-radius:10px;<?= $err ? '' : 'display:none;' ?>}
+    .err{margin-top:10px;color:#0D9488;background:#E0F2F1;border:1px solid #B2DFDB;padding:8px 10px;border-radius:10px;<?= $err ? '' : 'display:none;' ?>}
     .hint{margin-top:10px;color:var(--muted);font-size:12px}
     .footer{margin-top:14px;display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px}
     .link{color:var(--brand);text-decoration:none}

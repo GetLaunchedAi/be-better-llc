@@ -4,12 +4,12 @@
 /* Mobile */
 @media only screen and (min-width: 0em) {
   :root {
-    --primary: #c90000;
-    /* Crimson Red */
---primaryShade: #ff3333;
-    /* Bright Red */
---primaryDark: #8a0000;
-    /* Dark Red */
+    --primary: #14B8A6;
+    /* Teal */
+--primaryShade: #5EEAD4;
+    /* Mint */
+--primaryDark: #0D9488;
+    /* Dark Teal */
     --bodyTextColor: #4e4b66;
     --bodyTextColorWhite: #fafbfc;
     --headerColor: #1a1a1a;
@@ -395,6 +395,11 @@
   #navigation #navbar-menu ul {
     padding: 0;
     perspective: 700px;
+    display: none;
+  }
+
+  #navigation #navbar-menu.open ul {
+    display: block;
   }
 
   #navigation #navbar-menu ul li {
@@ -453,7 +458,7 @@
     height: .5rem;
     background: var(--primary);
     opacity: 1;
-    bottom: 5rem;
+    bottom: 0;
     border-radius: .25rem;
     left: -.375rem;
     right: -.375rem;
@@ -716,6 +721,17 @@
   body.dark-mode #navigation #navbar-menu ul li a.active {
     color: var(--primary);
   }
+
+  /* Dark mode: make admin and cart buttons white */
+  body.dark-mode #navigation .login-btn,
+  body.dark-mode #navigation .cart-btn {
+    color: #fff !important;
+  }
+
+  body.dark-mode #navigation .login-btn svg path,
+  body.dark-mode #navigation .cart-btn svg path {
+    fill: #fff !important;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -741,6 +757,17 @@
 
   body.dark-mode #navigation #navbar-menu ul li a.active {
     color: var(--primary);
+  }
+
+  /* Dark mode: make admin and cart buttons white */
+  body.dark-mode #navigation .login-btn,
+  body.dark-mode #navigation .cart-btn {
+    color: #fff !important;
+  }
+
+  body.dark-mode #navigation .login-btn svg path,
+  body.dark-mode #navigation .cart-btn svg path {
+    fill: #fff !important;
   }
 }
 
